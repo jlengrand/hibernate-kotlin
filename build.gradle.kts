@@ -28,6 +28,7 @@ dependencies {
 
     implementation("org.xerial:sqlite-jdbc:3.36.0.3")
     implementation("com.github.gwenn:sqlite-dialect:0.1.2")
+    implementation("org.flywaydb:flyway-core:8.4.3")
 
     testImplementation(kotlin("test"))
 }
