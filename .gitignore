@@ -75,3 +75,4 @@ kotlin-ide/
 
 .idea.jpb
 .jpb/
+/test.db

@@ -26,7 +26,8 @@ dependencies {
     implementation("org.hibernate:hibernate-core:5.6.5.Final")
     testImplementation("org.hibernate:hibernate-testing:5.6.5.Final")
 
-    implementation("com.h2database:h2:2.1.210")
+    implementation("org.xerial:sqlite-jdbc:3.36.0.3")
+    implementation("com.github.gwenn:sqlite-dialect:0.1.2")
 
     testImplementation(kotlin("test"))
 }
