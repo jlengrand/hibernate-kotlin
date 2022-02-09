@@ -1,6 +1,8 @@
 import org.flywaydb.core.Flyway
 import org.hibernate.cfg.Configuration
 import javax.persistence.*
+import javax.sql.DataSource
+
 
 @Entity
 class Entry(
