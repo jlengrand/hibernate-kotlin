@@ -1,8 +1,8 @@
 import org.flywaydb.core.Flyway
 import org.hibernate.cfg.Configuration
+import java.util.*
 import javax.persistence.*
-import javax.sql.DataSource
-
+import javax.persistence.criteria.CriteriaQuery
 
 @Entity
 class Entry(
@@ -27,10 +27,15 @@ class Person(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null,
+
+    @Column(name = "created_at")
+    val createdAt : Date? = null,
+
+    @Column(name = "updated_at")
+    val updatedAt : Date? = null,
 )
 
 fun main(args: Array<String>) {
-    println("Hello World!")
 
     ///
     //    Setup DB
@@ -56,7 +61,12 @@ fun main(args: Array<String>) {
 
     session.transaction.commit()
 
-    val result = session.createCriteria(Person::class.java).list()
+    val criteria: CriteriaQuery<Person> = session
+        .criteriaBuilder
+        .createQuery(Person::class.java)
+    criteria.from(Person::class.java)
+    val result = session.createQuery(criteria).list()
+
 
     result.map { println( "${(it as Person).entries} ${it.name}") }
     result.map { println("${(it as Person).entries?.size}") }
